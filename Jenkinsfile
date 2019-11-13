@@ -52,7 +52,10 @@ pipeline {
         }
       }
     }
-
+    stage("Run App Security Scan") {
+            agent any 
+            steps {  runSecurityTest() }
+        }
     stage('Quality Analysis') {
       parallel {
         // run Sonar Scan and Integration tests in parallel. This syntax requires Declarative Pipeline 1.2 or higher
